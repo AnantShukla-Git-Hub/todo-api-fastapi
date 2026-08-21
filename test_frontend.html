@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CORS Test</title>
+</head>
+<body>
+    <h1>CORS Test Page</h1>
+    <button onclick="getTodos()">Get Todos from Backend</button>
+    <pre id="result"></pre>
+
+    <script>
+        async function getTodos() {
+            try {
+                const response = await fetch("http://127.0.0.1:8000/todos");
+                const data = await response.json();
+                document.getElementById("result").textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById("result").textContent = "Error: " + error.message;
+            }
+        }
+    </script>
+</body>
+</html>
